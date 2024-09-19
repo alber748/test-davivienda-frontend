@@ -1,0 +1,40 @@
+<div class="flex flex-col text-white p-8 max-w-6xl w-screen">
+  <table class="table-auto bg-gray-800 rounded-lg shadow-lg">
+    <thead>
+      <tr class="text-left border-b border-gray-700">
+        <th class="px-6 py-4 text-teal-400">ID</th>
+        <th class="px-6 py-4 text-teal-400">Fecha de Creación</th>
+        <th class="px-6 py-4 text-teal-400">Monto</th>
+        <th class="px-6 py-4 text-teal-400">Plazo</th>
+        <th class="px-6 py-4 text-teal-400">Forma de Pago</th>
+        <th class="px-6 py-4 text-teal-400">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let solicitud of solicitudes.reverse()" class="border-b border-gray-700">
+        <td class="px-6 py-4">{{ solicitud.id }}</td>
+        <td class="px-6 py-4">{{ solicitud.fechaCreacion }}</td>
+        <td class="px-6 py-4">{{ solicitud.monto }}</td>
+        <td class="px-6 py-4">{{ solicitud.plazo }}</td>
+        <td class="px-6 py-4">{{ solicitud.formaPago.descripcion }}</td>
+        <td class="px-6 py-4">
+          <div class="flex space-x-4">
+          
+            <a (click)="onEdit(solicitud)" class="hover:text-yellow-400">
+              <!-- Icono de editar -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 3.487a1.5 1.5 0 012.121 0l1.53 1.53a1.5 1.5 0 010 2.121l-9.193 9.192a1.5 1.5 0 01-.532.353l-4.227 1.057a.75.75 0 01-.91-.91l1.058-4.227a1.5 1.5 0 01.353-.532l9.192-9.193zm-4.014 2.651l4.014 4.014M5.75 19.25h12.5" />
+              </svg>
+            </a>
+            <a [routerLink]="'/gestion-solicitudes/solicitudes-cliente/'+solicitud.cliente_id" class="hover:text-blue-400">
+              <!-- Icono de detalles -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4a4 4 0 100 8 4 4 0 000-8zm0 10a8 8 0 00-8 8v1h16v-1a8 8 0 00-8-8z" />
+              </svg>
+            </a>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
